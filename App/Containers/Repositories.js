@@ -11,7 +11,8 @@ import {
   Text,
   View,
   TouchableHighlight,
-  StyleSheet
+  StyleSheet,
+  InteractionManager
 } from 'react-native';
 
 var styles = StyleSheet.create({
@@ -42,6 +43,17 @@ var styles = StyleSheet.create({
  class Repositories extends React.Component{
    constructor(props) {
        super(props);
+   }
+
+   componentDidMount(){
+     InteractionManager.runAfterInteractions(() => {
+        this.setUserRepos();
+     });
+   }  
+    
+   
+   setUserRepos = () => {
+     this.props.userReposFetchRequested(this.props.userInfo.login);
    }
 
   render(){

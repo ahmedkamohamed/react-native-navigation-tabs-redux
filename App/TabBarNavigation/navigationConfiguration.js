@@ -22,7 +22,8 @@ tabBarOptions:{
 // background color is for the tab component
     activeBackgroundColor: 'blue',
     inactiveBackgroundColor: 'white',
-  }
+  },
+  lazy: true
 }
 
 export const TabBar = TabNavigator(routeConfiguration,tabBarConfiguration)

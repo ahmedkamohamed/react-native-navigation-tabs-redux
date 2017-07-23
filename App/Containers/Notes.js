@@ -13,7 +13,8 @@ import {
   ListView,
   TextInput,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  InteractionManager
 } from 'react-native';
 
 var styles = StyleSheet.create({
@@ -63,6 +64,18 @@ var styles = StyleSheet.create({
       //userInfo: {}
     }
   }
+
+  componentDidMount(){
+     InteractionManager.runAfterInteractions(() => {
+        this.setUserNotes();
+     });
+   }  
+
+   setUserNotes = () => {
+    const {userInfo} = this.props;
+    this.props.userNotesFetchRequested(this.props.userInfo.login);
+  };
+
   // componentWillReceiveProps(){
   //   console.log(this.props.notes);
   //   this.state = {
